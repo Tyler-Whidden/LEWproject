@@ -95,20 +95,22 @@
 		</div>
 	</div>
 	<section class="main-content clearfix" id="main-content" lang="en" role="main" tabindex="-1">
-		<div class="region-preface clearfix">
+
+		
+		<!-- <div class="region-preface clearfix">
 
 			<div class="block block-pane block-pane-epa-web-area-connect" id="block-pane-epa-web-area-connect">
 				<ul class="menu utility-menu">
-					<li class="menu-item"><a class="menu-link" href="{CONTACT URL}">Contact Us</a></li> 
-					<li><a href="#" class="fa fa-facebook"></a></li>
-					<li><a href="#" class="fa fa-twitter"></a></li>
-					<svg class="icon icon--social-link" aria-hidden="true">
-							<use xlink:href="/sites/all/themes/epa/img/svg/small-icons.svg#small-facebook"></use>
-						</svg>
-
+					<div class="region-preface clearfix">
+						<div id="block-pane-epa-web-area-connect" class="block block-pane contextual-links-region">
+							<ul class="menu utility-menu">
+								<li class="menu-item"><a href="https://www.epa.gov/climatechange/forms/climate-change-contact-us" class="menu-link contact-us">Contact Us</a></li>
+							<li id="share" class="menu-item"><button class="share-button">Share</button><ul><li class="share-facebook"><a class="share-link" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fappdev4.erg.com%2Fghgdatav1%2FTylertesting%2F&amp;t=Greenhouse%20Gas%20Inventory%20Data%20Explorer%20%7C%20US%20EPA" title="Share this page">Facebook</a></li><li class="share-twitter"><a class="share-link" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fappdev4.erg.com%2Fghgdatav1%2FTylertesting%2F&amp;text=Greenhouse%20Gas%20Inventory%20Data%20Explorer%20%7C%20US%20EPA&amp;url=http%3A%2F%2Fappdev4.erg.com%2Fghgdatav1%2FTylertesting%2F&amp;via=EPA&amp;count=none&amp;lang=en" title="Tweet this page">Twitter</a></li><li class="share-googleplus"><a class="share-link" href="https://plus.google.com/share?url=http%3A%2F%2Fappdev4.erg.com%2Fghgdatav1%2FTylertesting%2F" title="Plus 1 this page">Google+</a></li><li class="share-pinterest"><a class="share-link" href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fappdev4.erg.com%2Fghgdatav1%2FTylertesting%2F&amp;description=Greenhouse%20Gas%20Inventory%20Data%20Explorer%20%7C%20US%20EPAmedia=https%3A%2F%2Fwww.epa.gov%2Fsites%2Fall%2Fthemes%2Fepa%2Fimg%2Fepa-seal.png" title="Pin this page">Pinterest</a></li></ul></li></ul>
+						</div>
+					</div>
 				</ul>
 			</div>
-		</div>
+		</div> -->
     <div class="main-column clearfix">
       <!--googleon:all-->
       <h2 class="page-title">National Pollutant Discharge Elimination System (NPDES)</h1>
@@ -158,8 +160,8 @@
 							through the electronic Notice of Intent (eNOI) system. Several states that are authorized to implement the NPDES permitting program also accept LEWs. Check with your state NPDES permitting authority for more information.
 						</p>
 						<ul>
-							<li><a href=''>List of states, Indian country, and territories where EPA's 2012 Construction General Permit (CGP) and Multi-Sector General Permit (MSGP) Apply</a></li>
-							<li><a href=''>EPA's CGP eNOI System </a></li>
+							<li><a id="bodylink"  href=''>List of states, Indian country, and territories where EPA's 2012 Construction General Permit (CGP) and Multi-Sector General Permit (MSGP) Apply</a></li>
+							<li><a id="bodylink" href=''>EPA's CGP eNOI System </a></li>
 
 						</ul>
 						<p id="bodytext"> The period during which small construction sites qualify for the waiver generally occurs during a relatively short time in arid and semi-arid areas. If your small construction project does not qualify for a waiver, then NPDES stormwater permit coverage is required. </p>
@@ -167,15 +169,14 @@
 						<p id="bodytext"> To use the Rainfall Erosivity Factor Calculator to determine your eligibility for the LEW, you will need your project's location (either latitude/longitude or address) and the estimated start and end dates of construction. The period of construction activity begins at initial earth disturbance and ends with final stabilization. </p>
 					
 						<ul>
-							<li> <a href="">Construction Rainfall Erosivity Waiver Fact Sheet</a></li>
-							<li><a href=''>Appendix C of the 2017 CGP - Small Construction Waivers and Instructions </a></li>
+							<li> <a id="bodylink" href="">Construction Rainfall Erosivity Waiver Fact Sheet</a></li>
+							<li><a id="bodylink" href=''>Appendix C of the 2017 CGP - Small Construction Waivers and Instructions </a></li>
 						</ul>
 						<p id="bodytext"> For questions or comments, email EPA's CGP staff at <a href=''>cgp@epa.gov</a>.</p>
 						<form action="">
-							Location: <input type="text" id='location' value='Enter Address'> <input id="clickMe" type="button" value="Look up Address" onclick="getCoords();" /> <br>
 							Start Date: <input type="text" id="startdatepicker" value="MM/DD/YYYY"> End Date: <input type="text" id="enddatepicker" value="MM/DD/YYYY"><br>
-							<br>
-							<input value="View on map" type="button" onclick="makeMap();" />
+							<p id="note"> NOTE: If your construction project extends beyond the estimated end date, you will need to either recalculate the R factor based on a new end date, or apply for NPDES permit coverage. </p>
+							Location: <input type="text" id='location' value='Enter Address'><input id="mapViewButton" value="View on map" type="button" onclick="makeMap();" />
 
 							
 		
@@ -347,30 +348,7 @@
 
 <script src="https://js.arcgis.com/4.10/"></script>
 <script src="/js/script.js"></script>
-<script>
-function getCoords() {
-  var location = $("#location").val();
 
-  var ws =
-    'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?SingleLine=' + location + '&f=json&outSR=4326&outFields=Loc_name%2cCity%2cPlace_addr%2cRegion%2cRegionAbbr%2cCountry'
-
-  $("#datatxt").html("Calling web service");
-  $("#lon-lat").html("Loading");
-
-  $.getJSON(ws, function(data) {
-    console.log(data);
-
-    $("#datatxt").html(JSON.stringify(data));
-		$("#longitude").html(data.candidates[0].location.x.toString());
-		$("#latitude").html(data.candidates[0].location.y.toString());
-		alert('Coordinates Obtained');
-  }).fail(function() {
-    console.log("error");
-    $("#datatxt").html("error");
-	});
-	
-}
-</script>
 <script>
 function getRFactor() {
 
@@ -400,58 +378,78 @@ function getRFactor() {
 
 </script>
 <script>
-	function makeMap() {
-    require([
-        "esri/Map",
-				"esri/views/MapView",
-				"esri/Graphic"
+	async function makeMap() {
+		function getCoords() {
+  			var location = $("#location").val();
 
-      ],
-      function(Map, MapView, Graphic) {
-				var centerx = document.getElementById('longitude').innerHTML;
-				console.log(centerx);
-				var centery = document.getElementById('latitude').innerHTML;
-				console.log(centery);
-        // Create the Map with an initial basemap
-        var map = new Map({
-          basemap: "topo"
-        });
+  			var ws =
+    		'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?SingleLine=' + location + '&f=json&outSR=4326&outFields=Loc_name%2cCity%2cPlace_addr%2cRegion%2cRegionAbbr%2cCountry'
 
-        // Create the MapView and reference the Map in the instance
-        var view = new MapView({
-          container: "viewDiv",
-          map: map,
-          zoom: 15,
-          center: [centerx, centery]
+  			$("#datatxt").html("Calling web service");
+ 				 $("#lon-lat").html("Loading");
+
+  			$.getJSON(ws, function(data) {
+
+   			$("#datatxt").html(JSON.stringify(data));
+				$("#longitude").html(data.candidates[0].location.x.toString());
+				$("#latitude").html(data.candidates[0].location.y.toString());
+  			}).fail(function() {
+    		console.log("error");
+    		$("#datatxt").html("error");
 				});
-				
-				var point = {
-        type: "point", // autocasts as new Point()
-        longitude: centerx,
-        latitude: centery
-      };
+				}
+				await getCoords();
+				require([
+						"esri/Map",
+						"esri/views/MapView",
+						"esri/Graphic"
 
-      // Create a symbol for drawing the point
-      var markerSymbol = {
-        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-        color: [226, 119, 40],
-        outline: { // autocasts as new SimpleLineSymbol()
-          color: [255, 255, 255],
-          width: 2
-        }
-      };
+					],
+				function(Map, MapView, Graphic) {
+						var centerx = document.getElementById('longitude').innerHTML;
+						console.log(centerx);
+						var centery = document.getElementById('latitude').innerHTML;
+						console.log(centery);
+						// Create the Map with an initial basemap
+						var map = new Map({
+							basemap: "topo"
+						});
 
-      // Create a graphic and add the geometry and symbol to it
-      var pointGraphic = new Graphic({
-        geometry: point,
-        symbol: markerSymbol
-      });
+						// Create the MapView and reference the Map in the instance
+						var view = new MapView({
+							container: "viewDiv",
+							map: map,
+							zoom: 15,
+							center: [centerx, centery]
+						});
+						
+						var point = {
+						type: "point", // autocasts as new Point()
+						longitude: centerx,
+						latitude: centery
+						};
+
+					// Create a symbol for drawing the point
+						var markerSymbol = {
+						type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+						color: [226, 119, 40],
+						outline: { // autocasts as new SimpleLineSymbol()
+							color: [255, 255, 255],
+							width: 2
+							}
+						};
+
+					// Create a graphic and add the geometry and symbol to it
+						var pointGraphic = new Graphic({
+						geometry: point,
+						symbol: markerSymbol
+						});
 
 
-      // Add the graphics to the view's graphics layer
-      view.graphics.addMany([pointGraphic]);
-			});
-		}
+					// Add the graphics to the view's graphics layer
+						view.graphics.addMany([pointGraphic]);
+						});
+					}
   </script>
 </body>
 </html>
