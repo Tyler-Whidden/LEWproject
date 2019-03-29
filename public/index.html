@@ -24,7 +24,9 @@
   <meta name="DC.date.modified" content="" />
   <meta name="DC.date.reviewed" content="" />
   <meta name="DC.creator" content="" />
-  <title>Standalone Template for Applications | US EPA</title>
+	<title>Standalone Template for Applications | US EPA</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<!--googleoff: all-->
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="https://www.epa.gov/sites/all/libraries/standalone/css/core/style.css" media="all" />
@@ -94,23 +96,22 @@
 	</div>
 	<section class="main-content clearfix" id="main-content" lang="en" role="main" tabindex="-1">
 		<div class="region-preface clearfix">
-			<div class="block-views-revision-hublinks-block" id="block-views-revision-hublinks-block">
-				<div class="view view-revision-hublinks view-id-revision_hublinks">
-					<span class="related-info"><strong>Related Topics:</strong></span>
-					<ul class="menu pipeline">
-						<li class="menu-item"><a href="{HOME PAGE LINK}">Insert your Home Page Link here</a></li>
-					</ul>
-				</div>
-			</div>
+
 			<div class="block block-pane block-pane-epa-web-area-connect" id="block-pane-epa-web-area-connect">
 				<ul class="menu utility-menu">
-					<li class="menu-item"><a class="menu-link" href="{CONTACT URL}">Contact Us</a></li>
+					<li class="menu-item"><a class="menu-link" href="{CONTACT URL}">Contact Us</a></li> 
+					<li><a href="#" class="fa fa-facebook"></a></li>
+					<li><a href="#" class="fa fa-twitter"></a></li>
+					<svg class="icon icon--social-link" aria-hidden="true">
+							<use xlink:href="/sites/all/themes/epa/img/svg/small-icons.svg#small-facebook"></use>
+						</svg>
+
 				</ul>
 			</div>
 		</div>
     <div class="main-column clearfix">
       <!--googleon:all-->
-      <h1 class="page-title">National Pollutant Discharge Elimination System (NPDES)</h1>
+      <h2 class="page-title">National Pollutant Discharge Elimination System (NPDES)</h1>
       <div class="panel-pane pane-node-content">
         <div class="pane-content">
           <div class="node node-page clearfix view-mode-full">
@@ -147,13 +148,13 @@
 						<a href=''> NPDES Technical Resources </a>
 					</div>
 					<div class="col-9">
-						<h1 id="NPDESTitle"> Rainfall Erosivity Factor Calculator for Small Construction Sites </h1>
+						<h1 class="NPDESTitle"> Rainfall Erosivity Factor Calculator for Small Construction Sites </h1>
 						<p id="bodytext"> EPA's stormwater regulations allow NPDES permitting authorities to waive NPDES permitting requirements for stormwater discharges from small construction sites if: </p>
 							<ul> 
-								<li> The construction site disturbs less than five acres, and </li>
-								<li> the rainfall erosivity factor ("R" in the revised universal soil loss equation, or RUSLE) value is less than five during the period of construction activity</li>
+								<li id="bodytext"> The construction site disturbs less than five acres, and </li>
+								<li id="bodytext"> the rainfall erosivity factor ("R" in the revised universal soil loss equation, or RUSLE) value is less than five during the period of construction activity</li>
 							</ul>
-						<p> If your small construction project is located in an area where EPA is the permitting authority and your R factor is less than five, you qualify for a low erosivity waiver (LEW) from NPDES stormwater permitting. LEW certifications are submitted
+						<p id="bodytext"> If your small construction project is located in an area where EPA is the permitting authority and your R factor is less than five, you qualify for a low erosivity waiver (LEW) from NPDES stormwater permitting. LEW certifications are submitted
 							through the electronic Notice of Intent (eNOI) system. Several states that are authorized to implement the NPDES permitting program also accept LEWs. Check with your state NPDES permitting authority for more information.
 						</p>
 						<ul>
@@ -161,49 +162,75 @@
 							<li><a href=''>EPA's CGP eNOI System </a></li>
 
 						</ul>
-						<p> The period during which small construction sites qualify for the waiver generally occurs during a relatively short time in arid and semi-arid areas. If your small construction project does not qualify for a waiver, then NPDES stormwater permit coverage is required. </p>
+						<p id="bodytext"> The period during which small construction sites qualify for the waiver generally occurs during a relatively short time in arid and semi-arid areas. If your small construction project does not qualify for a waiver, then NPDES stormwater permit coverage is required. </p>
 
-						<p> To use the Rainfall Erosivity Factor Calculator to determine your eligibility for the LEW, you will need your project's location (either latitude/longitude or address) and the estimated start and end dates of construction. The period of construction activity begins at initial earth disturbance and ends with final stabilization. </p>
+						<p id="bodytext"> To use the Rainfall Erosivity Factor Calculator to determine your eligibility for the LEW, you will need your project's location (either latitude/longitude or address) and the estimated start and end dates of construction. The period of construction activity begins at initial earth disturbance and ends with final stabilization. </p>
 					
 						<ul>
 							<li> <a href="">Construction Rainfall Erosivity Waiver Fact Sheet</a></li>
 							<li><a href=''>Appendix C of the 2017 CGP - Small Construction Waivers and Instructions </a></li>
 						</ul>
-						<p> For questions or comments, email EPA's CGP staff at <a href=''>cgp@epa.gov</a>.</p>
+						<p id="bodytext"> For questions or comments, email EPA's CGP staff at <a href=''>cgp@epa.gov</a>.</p>
 						<form action="">
+							Location: <input type="text" id='location' value='Enter Address'> <input id="clickMe" type="button" value="Look up Address" onclick="getCoords();" /> <br>
 							Start Date: <input type="text" id="startdatepicker" value="MM/DD/YYYY"> End Date: <input type="text" id="enddatepicker" value="MM/DD/YYYY"><br>
 							<br>
-							Location: <input type="text" name="projectLocation" value="Enter Location Here"> <br>
-							<br><input type="submit" value="Submit">
+							<input value="View on map" type="button" onclick="makeMap();" />
+
+							
+		
+									<div id="viewDiv"></div>
+		
+		
+		
+		
+		
+		
+		
+							<input id="rButton" value="Determine R Factor" type="button" onclick="getRFactor();" />
 						</form>
-						<input type="text" id='location' value='8 Page Avenue Kingston MA'>
-						<input id="clickMe" type="button" value="clickme" onclick="getCoords();" />
 
                         <!-- <div id="viewDiv" style="height: 600px; width: 500px; margin-bottom: 300px"></div> -->
 					</div>
 				
+				</div>
+				<div class="row">
+					<div class="col-3">
+
+					</div>
+					<div class="col-9">
+						<div class="container" id="eContainer">
+							<h3 id="tableEI"> Erosivity Index:</h3>
+							<table class="table table-bordered">
+									<tbody>
+										<tr>
+											<td id="tableStart">Start Date: </td>
+											<td id="tableEnd">End Date: </td>
+
+										</tr>
+										<tr>
+											<td id="tableLatitude">Latitude: </td>
+											<td id="tableLongitude">Longitude</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+								<p id="conclusion"></p>
+						</div>
+					</div>
+				</div>
 					
-					</br>
-					
-					<textarea id="datatxt" rows="24" cols="150"></textarea>
-					</br>
-					
-					 <span id="lon-lat"></span>
+					<div>
+						<span id="longitude"></span>
+
+					</div>
+					<div>
+						<span id="latitude"></span>
+
+					</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                    
 				</div>
             </div>
         </div>
@@ -314,11 +341,12 @@
 				const month = parseInt(parts[1],10)-1;
 				const year = parseInt(parts[2], 10);
 				return new Date(year+'-'+month+'-'+day);
-			} });
+			}
+		 });
 </script>
 
 <script src="https://js.arcgis.com/4.10/"></script>
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 <script>
 function getCoords() {
   var location = $("#location").val();
@@ -333,13 +361,97 @@ function getCoords() {
     console.log(data);
 
     $("#datatxt").html(JSON.stringify(data));
-    $("#lon-lat").html(data.candidates[0].location.x.toString() + ',' +data.candidates[0].location.y.toString());
+		$("#longitude").html(data.candidates[0].location.x.toString());
+		$("#latitude").html(data.candidates[0].location.y.toString());
+		alert('Coordinates Obtained');
   }).fail(function() {
     console.log("error");
     $("#datatxt").html("error");
-    $("#lon-lat").html("error");
-  });
+	});
+	
 }
 </script>
+<script>
+function getRFactor() {
+
+	var startDate = $('#startdatepicker').val();
+	var endDate = $('#enddatepicker').val();
+	var coordx = document.getElementById('longitude').innerHTML;
+	var coordy = document.getElementById('latitude').innerHTML;
+	var coordinates = [coordx, coordy];
+	var locationz = 'location={"geometry":{"type":"Point","coordinates":['+coordx+','+coordy+']}}'
+
+	var webservice = 'https://api.epa.gov/lew/rfactor?start_date='+startDate+'&end_date='+endDate+'&location={"geometry":{"type":"Point","coordinates":['+coordx+','+coordy+']}}&api_key=yCM9DKRltA4gTGovk2naSvodO5iUDBCT7FAJ3CF5'
+
+	console.log(webservice);
+
+	$.getJSON(webservice, function(data) {
+		console.log(data.rfactor);
+		$('#tableEI').html('Erosivity Index:' + data.rfactor.toString());
+		$('#tableEnd').html('End Date:' + endDate);
+		$('#tableStart').html('Start Date: '+ startDate);
+		$('#tableLatitude').html("Latitude: " + coordx);
+		$('#tableLongitude').html("Longitude: "+coordy);
+		if (data.rfactor > 5) {
+			$('#conclusion').html('A rainfall erosivity factor of 5.0 or greater has been calculated for your site and period of construction. You do NOT qualify for a waiver from NPDES permitting requirements.');
+		}
+});
+}
+
+</script>
+<script>
+	function makeMap() {
+    require([
+        "esri/Map",
+				"esri/views/MapView",
+				"esri/Graphic"
+
+      ],
+      function(Map, MapView, Graphic) {
+				var centerx = document.getElementById('longitude').innerHTML;
+				console.log(centerx);
+				var centery = document.getElementById('latitude').innerHTML;
+				console.log(centery);
+        // Create the Map with an initial basemap
+        var map = new Map({
+          basemap: "topo"
+        });
+
+        // Create the MapView and reference the Map in the instance
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 15,
+          center: [centerx, centery]
+				});
+				
+				var point = {
+        type: "point", // autocasts as new Point()
+        longitude: centerx,
+        latitude: centery
+      };
+
+      // Create a symbol for drawing the point
+      var markerSymbol = {
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+        color: [226, 119, 40],
+        outline: { // autocasts as new SimpleLineSymbol()
+          color: [255, 255, 255],
+          width: 2
+        }
+      };
+
+      // Create a graphic and add the geometry and symbol to it
+      var pointGraphic = new Graphic({
+        geometry: point,
+        symbol: markerSymbol
+      });
+
+
+      // Add the graphics to the view's graphics layer
+      view.graphics.addMany([pointGraphic]);
+			});
+		}
+  </script>
 </body>
 </html>
